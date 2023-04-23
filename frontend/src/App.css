@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+.App{
+    min-height: 100vh;
+    display: flex;
+    background-image: url("farm.jpeg");
+    background-size: cover;
+    background-position: center;
+
+}
+
+.TitleBox {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background: white;
+    width: 100%;
+    margin: 40px 0 15px 0;
+    border-radius: 50cm;
+    border-width: 1px;
+}
+
+.heading{
+    font-size: large;
+    font-family: "Work sans";
+    font-weight: bolder;
+}
