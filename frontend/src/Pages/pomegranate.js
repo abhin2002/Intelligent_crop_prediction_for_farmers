@@ -1,10 +1,11 @@
+ 
 import React from 'react';
 import { Box, Tab, TabList, TabPanel, TabPanels, Tabs, Button, Link } from '@chakra-ui/react';
-import RiceImage from '../Images/Rice.jpg';
+import PomegranateImage from '../Images/Pomegranate.jpg';
 
-const RicePage = () => {
+const PomegranatePage = () => {
   return (
-    <Box bg={`url(${RiceImage})`} bgSize="cover" height="100vh">
+    <Box bg={`url(${PomegranateImage})`} bgSize="cover" height="100vh">
       <Box
         height="100%"
         display="flex"
@@ -16,13 +17,13 @@ const RicePage = () => {
         <Box maxW="sm" bg="white" borderRadius="md" p="4">
           <Tabs isFitted variant="enclosed">
             <TabList mb="1em">
-              <Tab>Rice</Tab>
+              <Tab>Pomegranate</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
                 <Box p="4">
                   <p>
-                    Rice is a staple food in many parts of the world, especially in
+                    Pomegranate is a staple food in many parts of the world, especially in
                     Asia. It is a cereal grain that is the most important staple food
                     for a large part of the world's human population. It provides
                     carbohydrates, which are the body's main source of energy, and
@@ -41,4 +42,4 @@ const RicePage = () => {
   );
 };
 
-export default RicePage;
+export default PomegranatePage;

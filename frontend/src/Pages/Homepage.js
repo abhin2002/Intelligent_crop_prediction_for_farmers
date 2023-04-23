@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './Modal.css'; // import the CSS file
 import { Link } from 'react-router-dom';
 import { Box, Button, FormControl, FormLabel, Input, Stack ,useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Text,} from '@chakra-ui/react';
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Text,} from '@chakra-ui/react';
 
 // nitrogen 
 // pottassium
