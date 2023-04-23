@@ -15,6 +15,7 @@ def evaluate_inputs(request):
     print(data)
     input_list = data['input_list']
     print(input_list)
+    print(type(input_list))
     confidence_score, crop, predictions = evaluate(input_list) # Call the 'evaluate' function with the input list
     print(predictions)
-    return JsonResponse({'crop':crop,'score':confidence_score,'predictions':predictions,'success': True})
+    return JsonResponse({'crop':crop,'score':confidence_score,'success': True})

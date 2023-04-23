@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
+import './Modal.css'; // import the CSS file
 import { Link } from 'react-router-dom';
-import { Box, Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Input, Stack ,useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Text,} from '@chakra-ui/react';
 
 // nitrogen 
 // pottassium
@@ -13,15 +21,45 @@ function HomePrediction() {
     const [nitrogen, setNitrogen] = useState('');
     const [pottassium, setPottassium] = useState('');
     const [phosphorous, setPhosphorous] = useState('');
+    const [temperature, settemp] = useState('');
+    const [humidity, setHumid] = useState('');
     const [ph, setPh] = useState('');
     const [rain, setRain] = useState('');
-    const [humidity, setHumid] = useState('');
+    
+    const [prediction, setPrediction] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
-
-    function handleSubmit(e) {
+    console.log("hi")
+    async function handleSubmit(e) {
         // logic for handling sign in form submission goes here
         e.preventDefault();
-        console.log(nitrogen,pottassium,phosphorous,ph,rain,humidity);
+        const inputValues = [parseInt(nitrogen), parseInt(pottassium),  parseInt(phosphorous), parseInt(temperature), parseInt(humidity), parseInt(ph), parseInt(rain) ];
+        console.log(inputValues);
+
+
+        
+        const res = await fetch("/api/v1/evaluate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            input_list: inputValues
+          })
+          
+        });
+        const data = await res.json();
+        console.log(data)
+        if (!data) {
+            window.alert("Prediction failed: " + data.message);
+            console.log("Prediction failed: " + data.message);
+        } else {
+            setPrediction("\n"+data.score+" : "+data.crop*100+" %");
+            setShowModal(true);
+            console.log("Prediction complete: " + data.score);
+        }
+
     }
 
     return (
@@ -41,6 +79,14 @@ function HomePrediction() {
                 <Input type="number" value={phosphorous} onChange={(e) => setPhosphorous(e.target.value)} />
             </FormControl>
             <FormControl>
+                <FormLabel>Temperature</FormLabel>
+                <Input type="number" value={temperature} onChange={(e) => settemp(e.target.value)} />
+            </FormControl>
+            <FormControl>
+                <FormLabel>Humidity</FormLabel>
+                <Input type="number" value={humidity} onChange={(e) => setHumid(e.target.value)} />
+            </FormControl>
+            <FormControl>
                 <FormLabel>ph</FormLabel>
                 <Input type="number" value={ph} onChange={(e) => setPh(e.target.value)} />
             </FormControl>
@@ -48,13 +94,31 @@ function HomePrediction() {
                 <FormLabel>Rainfall</FormLabel>
                 <Input type="number" value={rain} onChange={(e) => setRain(e.target.value)} />
             </FormControl>
-            <FormControl>
-                <FormLabel>Humidity</FormLabel>
-                <Input type="number" value={humidity} onChange={(e) => setHumid(e.target.value)} />
-            </FormControl>
             <Button type="submit" colorScheme="blue">Show results</Button>
             </Stack>
         </form>
+        {showModal && (
+  <div className="modal">
+    <div className="modal-content">
+      <span className="close" onClick={() => setShowModal(false)}>
+        &times;
+      </span>
+      <div className="prediction-container">
+        <div className="prediction-label">
+          <p>Prediction complete:</p>
+        </div>
+        <div className="prediction-value">
+          <p>{prediction}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
+        
+        
         </Box>
     );
 }
