@@ -6,7 +6,7 @@ import SignIn from './Pages/signIn';
 import HomePrediction from './Pages/Homepage';
 import RicePage from './Pages/rice';
 import MaizePage from './Pages/maize';
-import ChickpeaPage from './Pages/chickpea';
+import ChickPeaPage from './Pages/chickpea';
 import KidneyBeansPage from './Pages/kidneybeans';
 import PigeonPeasPage from './Pages/pigeonpeas';
 import MothBeansPage from './Pages/mothbeans';

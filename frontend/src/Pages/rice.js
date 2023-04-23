@@ -16,17 +16,20 @@ const RicePage = () => {
         <Box maxW="sm" bg="white" borderRadius="md" p="4">
           <Tabs isFitted variant="enclosed">
             <TabList mb="1em">
-              <Tab>Rice</Tab>
+              <Tab>അരി</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
                 <Box p="4">
                   <p>
-                    Rice is a staple food in many parts of the world, especially in
-                    Asia. It is a cereal grain that is the most important staple food
-                    for a large part of the world's human population. It provides
-                    carbohydrates, which are the body's main source of energy, and
-                    also contains small amounts of protein, fat, and vitamins.
+                    <h2 style={{ fontWeight: "bold" }}><u>വളപ്രയോഗം</u></h2>
+                    മണ്ണിലെ pH 6.5 ല്‍ കുറവാണെങ്കില്‍ കുമ്മായം ചേര്‍ക്കണം.
+
+                    ഒന്നാം വിളക്കാലം - 600 കിലോ കുമ്മായം / ഹെക്റ്റര്‍ ( രണ്ട് തവണകളായി ‍)
+
+                    നിലം ഒരുക്കുന്ന സമയത്ത് - 350 കിലോ
+
+                    വിതച്ച് / നട്ട് ഒരുമാസത്തിന് ശേഷം - 250 കിലോ
                   </p>
                   <Link href="http://www.krishi.info/help_video/view_sub_details/143/33">
                     <Button mt="4" colorScheme="blue">Read more</Button>

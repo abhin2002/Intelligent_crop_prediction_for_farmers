@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Tab, TabList, TabPanel, TabPanels, Tabs, Button, Link } from '@chakra-ui/react';
-import CoconutImage from '../Images/Coconut.jpg';
+import CoconutImage from '../Images/Coconut.jpeg';
 
 const CoconutPage = () => {
   return (

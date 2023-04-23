@@ -1,7 +1,6 @@
- 
 import React from 'react';
 import { Box, Tab, TabList, TabPanel, TabPanels, Tabs, Button, Link } from '@chakra-ui/react';
-import PomegranateImage from '../Images/Pomegranate.jpg';
+import PomegranateImage from '../Images/Pomegranate.jpeg';
 
 const PomegranatePage = () => {
   return (

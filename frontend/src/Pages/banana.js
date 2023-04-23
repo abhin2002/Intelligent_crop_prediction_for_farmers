@@ -16,19 +16,16 @@ const BananaPage = () => {
         <Box maxW="sm" bg="white" borderRadius="md" p="4">
           <Tabs isFitted variant="enclosed">
             <TabList mb="1em">
-              <Tab>Banana</Tab>
+              <Tab>വാഴ</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
                 <Box p="4">
+                <h2 style={{ fontWeight: "bold" }}><u>വളപ്രയോഗം</u></h2>
                   <p>
-                    Banana is a staple food in many parts of the world, especially in
-                    Asia. It is a cereal grain that is the most important staple food
-                    for a large part of the world's human population. It provides
-                    carbohydrates, which are the body's main source of energy, and
-                    also contains small amounts of protein, fat, and vitamins.
+                  കമ്പോസ്റ്റ്, കാലിവളം, പച്ചിലവളം എന്നിവയിലൊന്ന്‍ ഒരു കുഴിയില്‍ പത്തുകിലോഗ്രാം എന്ന കണക്കില്‍ ചേര്‍ക്കുക
                   </p>
-                  <Link href="http://www.krishi.info/help_video/view_sub_details/143/33">
+                  <Link href="http://www.krishi.info/help_video/view_sub_details/270/24">
                     <Button mt="4" colorScheme="blue">Read more</Button>
                   </Link>
                 </Box>
