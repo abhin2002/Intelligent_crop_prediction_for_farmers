@@ -28,8 +28,9 @@ function App() {
                         <SignIn></SignIn>
                     </Route>
                     <Route path="/">
-                        <HomePrediction data={data}></HomePrediction> {/* pass the data to the component */}
+                        <HomePrediction data={data}></HomePrediction>
                     </Route>
+                    
                 </Switch>
             </Router>
         </ChakraProvider>

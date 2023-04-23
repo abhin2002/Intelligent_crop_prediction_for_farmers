@@ -1,5 +1,6 @@
-
+node_modules/
 models/lightning_logs/version_0/events.out.tfevents.1682179952.LAPTOP-E1NL6GAU.16536.0
 *.ckpt
 *.0
 *.yaml
+.env
