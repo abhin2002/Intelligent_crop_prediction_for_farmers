@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import SignUp from './Pages/signUp';
 import SignIn from './Pages/signIn';
 import HomePrediction from './Pages/Homepage';
+import CropPage from './Pages/rice';
 
 function App() {
     const [data, setData] = useState([]);
@@ -26,6 +27,9 @@ function App() {
                     </Route>
                     <Route path="/signin">
                         <SignIn></SignIn>
+                    </Route>
+                    <Route path="/crops">
+                        <CropPage></CropPage>
                     </Route>
                     <Route path="/">
                         <HomePrediction data={data}></HomePrediction>
