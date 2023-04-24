@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Tab, TabList, TabPanel, TabPanels, Tabs, Button, Link } from '@chakra-ui/react';
 import MangoImage from '../Images/Mango.png';
-
+import fertilizer from '../Images/MangoFertilize.png'
 const MangoPage = () => {
   return (
     <Box bg={`url(${MangoImage})`} bgSize="cover" height="100vh">
@@ -16,19 +16,14 @@ const MangoPage = () => {
         <Box maxW="sm" bg="white" borderRadius="md" p="4">
           <Tabs isFitted variant="enclosed">
             <TabList mb="1em">
-              <Tab>Mango</Tab>
+              <Tab>മാവ്</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
                 <Box p="4">
-                  <p>
-                    Mango is a staple food in many parts of the world, especially in
-                    Asia. It is a cereal grain that is the most important staple food
-                    for a large part of the world's human population. It provides
-                    carbohydrates, which are the body's main source of energy, and
-                    also contains small amounts of protein, fat, and vitamins.
-                  </p>
-                  <Link href="http://www.krishi.info/help_video/view_sub_details/143/33">
+                <h2 style={{ fontWeight: "bold" }}><u>വളപ്രയോഗം</u></h2>
+                <img src={fertilizer} alt="Fertilizer" />
+                  <Link href="http://www.krishi.info/help_video/view_sub_details/1441/24">
                     <Button mt="4" colorScheme="blue">Read more</Button>
                   </Link>
                 </Box>

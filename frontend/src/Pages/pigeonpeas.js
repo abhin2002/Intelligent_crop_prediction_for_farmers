@@ -26,6 +26,7 @@ const PigeonPeaPage = () => {
                         ഹെക്ടറൊന്നിന് 3 ടണ്‍ കാലിവളം, 500 കിലോഗ്രാം കുമ്മായം, 40 കിലോഗ്രാം പാക്യജനകം, 80 കിലോഗ്രാം ഭാവഹം ഇവ വേണ്ടിവരും.
                         </p>
                     <Link href="http://www.krishi.info/help_video/view_sub_details/2433/27">
+                        {/* link corrected */}
                         <Button mt="4" colorScheme="blue">Read more</Button>
                     </Link>
                     </Box>

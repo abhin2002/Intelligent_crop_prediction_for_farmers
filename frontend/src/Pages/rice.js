@@ -32,6 +32,7 @@ const RicePage = () => {
                     വിതച്ച് / നട്ട് ഒരുമാസത്തിന് ശേഷം - 250 കിലോ
                   </p>
                   <Link href="http://www.krishi.info/help_video/view_sub_details/143/33">
+                    {/* link corrected */}
                     <Button mt="4" colorScheme="blue">Read more</Button>
                   </Link>
                 </Box>

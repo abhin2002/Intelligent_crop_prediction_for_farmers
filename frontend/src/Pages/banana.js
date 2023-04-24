@@ -26,6 +26,7 @@ const BananaPage = () => {
                   കമ്പോസ്റ്റ്, കാലിവളം, പച്ചിലവളം എന്നിവയിലൊന്ന്‍ ഒരു കുഴിയില്‍ പത്തുകിലോഗ്രാം എന്ന കണക്കില്‍ ചേര്‍ക്കുക
                   </p>
                   <Link href="http://www.krishi.info/help_video/view_sub_details/270/24">
+                    {/* link corrected */}
                     <Button mt="4" colorScheme="blue">Read more</Button>
                   </Link>
                 </Box>
