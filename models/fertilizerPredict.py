@@ -1,3 +1,6 @@
+'''
+Script to provide fertilizer recommendation based on soil test results
+'''
 """
 Model to predict crop yield based on data
 """
@@ -76,7 +79,7 @@ class datasetAdaptor(data.Dataset):
         x = torch.tensor(x.values, dtype=torch.float)
         y = self.mapping.index(y)
         y = torch.tensor(y, dtype=torch.float)
-        return x, y
+        return y,x
 
     def classmapping(self):
         """
@@ -152,12 +155,15 @@ class cropDataModule(LightningDataModule):
 
 
 class Model(nn.Module):
+    '''
+    NN model that takes in crop type and returns the soil parameters
+    '''
     def __init__(self):
         super(Model, self).__init__()
-        self.fc1 = nn.Linear(7, 14)
+        self.fc1 = nn.Linear(1, 14)
         self.fc2 = nn.Linear(14, 70)
         self.fc3 = nn.Linear(70, 35)
-        self.fc4 = nn.Linear(35, 22)
+        self.fc4 = nn.Linear(35, 7)
         self.softmax = nn.Softmax(dim=1)
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.2)
@@ -217,22 +223,5 @@ def train():
     dm = cropDataModule(data)
     trainer = pl.Trainer(max_epochs=300)
     trainer.fit(model, dm)
-    torch.save(model.model.state_dict(), "./model_2.pth")
+    torch.save(model.model.state_dict(), "./model.pth")
 
-def evaluate(input_data):
-    df = pd.read_csv("./data/Crop_recommendation.csv")
-    means = [df[col].mean() for col in df.columns[:-1]]
-    stds = [df[col].std() for col in df.columns[:-1]]
-    normal_data = torch.tensor([(input_data[i] - means[i])/stds[i] for i in range(len(input_data))],dtype=torch.float)
-    model = predictionModule()
-    class_list = df["label"].unique()
-    model.model.load_state_dict(torch.load("./model.pth"))
-    model.eval()
-    y = model(normal_data)
-    probabilities = F.softmax(y, dim=0)
-    print(probabilities)
-    confidence_score, predicted_class = torch.max(probabilities, dim=0)
-    print(f"Predicted class: {class_list[predicted_class.item()]}, Confidence score: {confidence_score.item()}")
-if __name__ == "__main__":
-    raw_input_data = [85,58,41,21.77046169,80.31964408,7.038096361,226.6555374]
-    evaluate(raw_input_data)
