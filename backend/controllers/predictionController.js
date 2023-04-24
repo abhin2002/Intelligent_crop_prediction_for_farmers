@@ -8,7 +8,7 @@ const predict = asyncHandler(async function(req,res){
     }
     try{
         const soil =  await soilComponents.create({
-            // userId : req.user,
+            userId : req.user,
             nitrogen : req.body.nitrogen,
             pottassium : req.body.pottassium,
             phosphorous : req.body.phosphorous,
@@ -19,6 +19,7 @@ const predict = asyncHandler(async function(req,res){
         if(soil){
             res.status(201).json({
                 _id : soil._id,
+                userId : soil.userId,
                 nitrogen : soil.nitrogen,
                 pottassium : soil.pottassium,
                 phosphorous : soil.phosphorous,

@@ -217,7 +217,7 @@ def train():
     dm = cropDataModule(data)
     trainer = pl.Trainer(max_epochs=300)
     trainer.fit(model, dm)
-    torch.save(model.model.state_dict(), "./model.pth")
+    torch.save(model.model.state_dict(), "./model_2.pth")
 
 def evaluate(input_data):
     df = pd.read_csv("./data/Crop_recommendation.csv")

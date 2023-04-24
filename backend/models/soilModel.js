@@ -8,6 +8,10 @@
 const mongoose = require("mongoose")
 const componentMeasures = mongoose.Schema(
     {
+        userId : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Users"
+        },
         nitrogen : {
             type : integer,
             required : true
