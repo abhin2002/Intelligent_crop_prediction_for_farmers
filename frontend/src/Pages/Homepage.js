@@ -26,8 +26,11 @@ function HomePrediction() {
     const [ph, setPh] = useState('');
     const [rain, setRain] = useState('');
     
-    const [prediction, setPrediction] = useState(null);
+    const [predictions, setPredictions] = useState([]);
     const [showModal, setShowModal] = useState(false);
+
+    
+    
 
     console.log("hi")
     async function handleSubmit(e) {
@@ -55,12 +58,17 @@ function HomePrediction() {
             window.alert("Prediction failed: " + data.message);
             console.log("Prediction failed: " + data.message);
         } else {
-            setPrediction("\n"+data.score+" : "+data.crop*100+" %");
             setShowModal(true);
+            setPredictions(data.map(item => "\n"+item.predicted_class+" : "+(item.confidence_score*100).toFixed(2)+" %"));
             console.log("Prediction complete: " + data.score);
         }
 
     }
+
+    const handlePredictionClick = (prediction) => {
+        console.log(`Selected prediction: ${prediction}`);
+      };
+      
 
     return (
         <Box p={4}>
@@ -105,15 +113,22 @@ function HomePrediction() {
       </span>
       <div className="prediction-container">
         <div className="prediction-label">
-          <p>Prediction complete:</p>
+          <p>Predictions:</p>
         </div>
         <div className="prediction-value">
-          <p>{prediction}</p>
-        </div>
+        {predictions.map((prediction, index) => (
+  <div key={index}>
+    <button className="prediction-button" onClick={() => handlePredictionClick(prediction)}>{prediction}</button>
+  </div>
+))}
+
+</div>
+
       </div>
     </div>
   </div>
 )}
+
 
 
 

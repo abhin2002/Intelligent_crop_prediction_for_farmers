@@ -47,3 +47,39 @@
     margin: 0; /* remove default margins */
   }
   
+  /* .prediction-value {
+    font-size: 1.2em;
+  } */
+
+  .prediction-label p {
+    font-weight: bold;
+  }
+
+  .prediction-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .prediction-button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .prediction-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  button.prediction-button {
+    width: 200px;
+  }

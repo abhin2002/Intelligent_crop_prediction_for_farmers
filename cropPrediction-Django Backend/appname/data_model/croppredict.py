@@ -231,9 +231,17 @@ def evaluate(input_data):
     y = model(normal_data)
     probabilities = F.softmax(y, dim=0)
     print(probabilities)
-    confidence_score, predicted_class = torch.max(probabilities, dim=0)
-    print(f"Predicted class: {class_list[predicted_class.item()]}, Confidence score: {confidence_score.item()}")
-    return class_list[predicted_class.item()],confidence_score.item(),probabilities
+    confidence_scores, predicted_classes = torch.topk(probabilities, k=3, dim=0)
+    for i in range(3):
+        print(f"Predicted class {i+1}: {class_list[predicted_classes[i].item()]}, Confidence score: {confidence_scores[i].item()}")
+    results = []
+    for i in range(3):
+        result = {
+            "predicted_class": class_list[predicted_classes[i].item()],
+            "confidence_score": confidence_scores[i].item()
+        }
+        results.append(result)
+    return results
 if __name__ == "__main__":
     raw_input_data = [85,58,41,21.77046169,80.31964408,7.038096361,226.6555374]
     evaluate(raw_input_data)
