@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Modal.css'; // import the CSS file
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import BackgroundImage from '../Images/farm.jpeg'
 import { Box, Button, FormControl, FormLabel, Input, Stack ,useDisclosure,
     Modal,
     ModalOverlay,
@@ -8,7 +9,8 @@ import { Box, Button, FormControl, FormLabel, Input, Stack ,useDisclosure,
     ModalHeader,
     ModalBody,
     ModalFooter,
-    Text,} from '@chakra-ui/react';
+    Text,
+    Flex,} from '@chakra-ui/react';
 
 // nitrogen 
 // pottassium
@@ -26,6 +28,8 @@ function HomePrediction() {
     const [ph, setPh] = useState('');
     const [rain, setRain] = useState('');
     
+    const history = useHistory();
+
     const [predictions, setPredictions] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
@@ -74,70 +78,80 @@ function HomePrediction() {
       
 
     return (
-        <Box p={4}>
-        <form onSubmit={handleSubmit}>
-            <Stack spacing={4}>
-            <FormControl>
-                <FormLabel>Nitrogen</FormLabel>
-                <Input type="number" value={nitrogen} onChange={(e) => setNitrogen(e.target.value)} />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Pottassium</FormLabel>
-                <Input type="number" value={pottassium} onChange={(e) => setPottassium(e.target.value)} />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Phosphorous</FormLabel>
-                <Input type="number" value={phosphorous} onChange={(e) => setPhosphorous(e.target.value)} />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Temperature</FormLabel>
-                <Input type="number" value={temperature} onChange={(e) => settemp(e.target.value)} />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Humidity</FormLabel>
-                <Input type="number" value={humidity} onChange={(e) => setHumid(e.target.value)} />
-            </FormControl>
-            <FormControl>
-                <FormLabel>ph</FormLabel>
-                <Input type="number" value={ph} onChange={(e) => setPh(e.target.value)} />
-            </FormControl>
-            <FormControl>
-                <FormLabel>Rainfall</FormLabel>
-                <Input type="number" value={rain} onChange={(e) => setRain(e.target.value)} />
-            </FormControl>
-            <Button type="submit" colorScheme="blue">Show results</Button>
-            </Stack>
-        </form>
-        {showModal && (
-  <div className="modal">
-    <div className="modal-content">
-      <span className="close" onClick={() => setShowModal(false)}>
-        &times;
-      </span>
-      <div className="prediction-container">
-        <div className="prediction-label">
-          <p>Predictions:</p>
+      <Box bg={`url(${BackgroundImage})`} bgSize="cover" height="100vh">
+  <Box 
+    height="100%"
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    bg="rgba(255, 255, 255, 0.6)"
+    flexDirection="column"
+  >
+    <form onSubmit={handleSubmit}>
+      <Stack spacing={4}>
+        <Flex flexDirection="row" justifyContent="space-between">
+          <FormControl marginRight="4">
+            <FormLabel>Nitrogen</FormLabel>
+            <Input type="number" value={nitrogen} onChange={(e) => setNitrogen(e.target.value)} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Pottassium</FormLabel>
+            <Input type="number" value={pottassium} onChange={(e) => setPottassium(e.target.value)} />
+          </FormControl>
+        </Flex>
+        <Flex flexDirection="row" justifyContent="space-between">
+        <FormControl marginRight="4">
+          <FormLabel>Phosphorous</FormLabel>
+          <Input type="number" value={phosphorous} onChange={(e) => setPhosphorous(e.target.value)} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Temperature</FormLabel>
+          <Input type="number" value={temperature} onChange={(e) => settemp(e.target.value)} />
+        </FormControl>
+        </Flex>
+        <Flex flexDirection="row" justifyContent="space-between">
+        <FormControl marginRight="4">
+          <FormLabel>Humidity</FormLabel>
+          <Input type="number" value={humidity} onChange={(e) => setHumid(e.target.value)} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>ph</FormLabel>
+          <Input type="number" value={ph} onChange={(e) => setPh(e.target.value)} />
+        </FormControl>
+        </Flex>
+        <Flex flexDirection="row" justifyContent="space-between">
+        <FormControl marginRight="4">
+          <FormLabel>Rainfall</FormLabel>
+          <Input type="number" value={rain} onChange={(e) => setRain(e.target.value)} />
+        </FormControl>
+        </Flex>
+      </Stack>
+        <Button type="submit" colorScheme="blue" width='170px' marginLeft="50" marginTop="5" >Show results</Button>
+    </form>
+    {showModal && (
+      <div className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={() => setShowModal(false)}>
+            &times;
+          </span>
+          <div className="prediction-container">
+            <div className="prediction-label">
+              <p>Predictions:</p>
+            </div>
+            <div className="prediction-value">
+              {predictions.map((prediction, index) => (
+                <div key={index}>
+                  <button className="prediction-button" onClick={() => handlePredictionClick(prediction)}>{prediction}</button>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="prediction-value">
-        {predictions.map((prediction, index) => (
-  <div key={index}>
-    <button className="prediction-button" onClick={() => handlePredictionClick(prediction)}>{prediction}</button>
-  </div>
-))}
-
-</div>
-
       </div>
-    </div>
-  </div>
-)}
+    )}
+  </Box>
+</Box>
 
-
-
-
-        
-        
-        </Box>
     );
 }
 
