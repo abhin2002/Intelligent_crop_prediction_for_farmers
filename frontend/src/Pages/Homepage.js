@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Modal.css'; // import the CSS file
-import { Link } from 'react-router-dom';
+import { Link ,useHistory} from 'react-router-dom';
 import { Box, Button, FormControl, FormLabel, Input, Stack ,useDisclosure,
     Modal,
     ModalOverlay,
@@ -29,7 +29,7 @@ function HomePrediction() {
     const [predictions, setPredictions] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
-    
+    const history = useHistory();
     
 
     console.log("hi")
@@ -66,9 +66,25 @@ function HomePrediction() {
     }
 
     const handlePredictionClick = (prediction) => {
+      
         console.log(`Selected prediction: ${prediction}`);
-        const url = `/prediction/${prediction.replace(/\s+/g, '-').toLowerCase()}`;
-        history.push(url);
+        //const url = `/apple`;
+        let pathname = decodeURIComponent(prediction);
+        const startIndex = pathname.indexOf("-") + 1;
+        const endIndex = pathname.indexOf("-", startIndex);
+        pathname = pathname.substring(startIndex, endIndex);
+        console.log("pathname : ",pathname)
+
+        const url = `/${pathname}`;
+        console.log("url: ",url)
+        //const url = `/${prediction.replace(/\s+/g, '-').toLowerCase()}`;
+        try{
+          history.push(url);
+        }
+        catch(err){
+          console.log("error")
+          history.push("/rice");
+        }
         // the button of the predictions
       };
       
