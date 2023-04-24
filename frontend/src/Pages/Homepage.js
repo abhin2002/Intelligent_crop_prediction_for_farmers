@@ -67,6 +67,9 @@ function HomePrediction() {
 
     const handlePredictionClick = (prediction) => {
         console.log(`Selected prediction: ${prediction}`);
+        const url = `/prediction/${prediction.replace(/\s+/g, '-').toLowerCase()}`;
+        history.push(url);
+        // the button of the predictions
       };
       
 
